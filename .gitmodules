@@ -1,4 +1,4 @@
 [submodule "backend"]
 	path = backend
 	url = https://github.com/22Winter-TeamI/backend.git
-	branch = dev
+	branch = develop
