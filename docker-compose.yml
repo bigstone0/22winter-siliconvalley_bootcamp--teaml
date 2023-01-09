@@ -1,9 +1,8 @@
-version: "3.7"
+version: "3"
 
 services:
   db:
-    image: mysql
-    platform: linux/amd64
+    image: mysql:8.0.29
     container_name: mysql-con
     env_file:
       - ./.env
@@ -16,18 +15,15 @@ services:
     # networks:
     #   - app-tier
     # 명령어 실행 끝나도 안꺼짐
-    tty: true
+    restart: always
 
   backend:
-    links:
-      - db
+  
     container_name: backend-con
     build:
       context: ./backend
     ports:
       - 8000:8000
-    expose:
-      - 8000
     volumes:
       - ./backend:/backend/
     # restart: always 배포때만
@@ -39,8 +35,7 @@ services:
     # networks:
     #   - app-tier
     # 명령어 실행 끝나도 안꺼짐
-    tty: true
+
   
 volumes:
   data_mysql:
-  build_folder:
