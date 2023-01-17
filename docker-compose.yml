@@ -15,7 +15,12 @@ services:
     # networks:
     #   - app-tier
     # 명령어 실행 끝나도 안꺼짐
-    restart: always
+    # restart: always
+    healthcheck:
+      test: mysql ${MYSQL_DATABASE} --user=${MYSQL_ROOT_USER} --password='${MYSQL_PASSWORD}' --silent --execute "SELECT 1;"
+      interval: 10s
+      timeout: 2s
+      retries: 100
 
   backend:
   
@@ -35,7 +40,8 @@ services:
     # networks:
     #   - app-tier
     # 명령어 실행 끝나도 안꺼짐
-
+    
+  
   
 volumes:
   data_mysql:
