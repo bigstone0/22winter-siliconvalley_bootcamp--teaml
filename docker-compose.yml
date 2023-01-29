@@ -1,6 +1,5 @@
 version: "3"
 
-
 services:
   db:
     image: mysql:8.0.29
@@ -13,13 +12,10 @@ services:
       - 3306
     volumes:
       - data_mysql:/mysql
-    healthcheck:
-      test: mysql ${MYSQL_DATABASE} --user=${MYSQL_ROOT_USER} --password='${MYSQL_PASSWORD}' --silent --execute "SELECT 1;"
-      interval: 10s
-      timeout: 2s
-      retries: 100
+    # networks:
+    #   - app-tier
     # 명령어 실행 끝나도 안꺼짐
-    # restart: always
+    restart: always
 
   backend:
   
@@ -28,8 +24,6 @@ services:
       context: ./backend
     ports:
       - 8000:8000
-    expose:
-      - 8000
     volumes:
       - ./backend:/backend/
     # restart: always 배포때만
@@ -38,33 +32,10 @@ services:
     depends_on:
       - db
     # command: 
+    # networks:
+    #   - app-tier
     # 명령어 실행 끝나도 안꺼짐
 
-  frontend:
-    build:
-      context: ./frontend
-      args:
-        API:_URL: "*"
-    environment:
-      - REACT_APP_BACKEND_URL=http://localhost
-    volumes:
-      - ./frontend/:/frontend
-      - build_folder:/frontend/build
-      - ./frontend/node_modules/:/frontend/node_modules
-    tty: true
   
-  nginx:
-    build: ./nginx
-    ports:
-     - 80:8080
-    volumes:
-      - build_folder:/var/www/frontend
-      - ./nginx/log:/var/log/nginx
-    
-    depends_on:
-     - backend
-     - frontend
-
 volumes:
   data_mysql:
-  build_folder:
