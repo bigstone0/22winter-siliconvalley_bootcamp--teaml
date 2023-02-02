@@ -1,5 +1,11 @@
 version: "3"
 
+networks:
+  app-tier:
+    driver: bridge
+  grafana-tier:
+    driver: bridge 
+
 services:
   db:
     image: mysql:8.0.29
@@ -12,30 +18,168 @@ services:
       - 3306
     volumes:
       - data_mysql:/mysql
-    # networks:
-    #   - app-tier
+    healthcheck:
+      test: mysql ${MYSQL_DATABASE} --user=${MYSQL_ROOT_USER} --password='${MYSQL_PASSWORD}' --silent --execute "SELECT 1;"
+      interval: 10s
+      timeout: 2s
+      retries: 100 
     # 명령어 실행 끝나도 안꺼짐
     restart: always
+    networks:
+      - app-tier
 
   backend:
-  
     container_name: backend-con
     build:
       context: ./backend
     ports:
       - 8000:8000
+    expose:
+      - 8000
     volumes:
       - ./backend:/backend/
     # restart: always 배포때만
     env_file:
       - ./.env
     depends_on:
-      - db
+      - db   
+    networks:
+      - app-tier
+    restart: always 
     # command: 
-    # networks:
-    #   - app-tier
     # 명령어 실행 끝나도 안꺼짐
 
+  frontend:
+    build:
+      context: ./frontend
+      args:
+        API:_URL: "*"
+    environment:
+      - REACT_APP_BACKEND_URL=http://localhost
+    volumes:
+      - ./frontend/:/frontend
+      - build_folder:/frontend/build
+      - ./frontend/node_modules/:/frontend/node_modules
+    tty: true
+    networks:
+      - app-tier
   
+  nginx:
+    build: ./nginx
+    ports:
+     - 80:8080
+    volumes:
+      - build_folder:/var/www/frontend
+      - ./nginx/log:/var/log/nginx
+    
+    depends_on:
+     - backend
+     - frontend  
+    networks:
+      - app-tier
+
+  prometheus:
+    image: prom/prometheus:latest
+    volumes:
+      - ./prometheus/:/etc/prometheus/
+      - ./prometheus/data:/prometheus
+    command:
+      - '--config.file=/etc/prometheus/prometheus.yml'
+      - '--storage.tsdb.path=/prometheus'
+      - '--web.console.libraries=/usr/share/prometheus/console_libraries'
+      - '--web.console.templates=/usr/share/prometheus/consoles'
+    ports:
+      - 9090:9090
+    links:
+      - cadvisor:cadvisor
+    depends_on:
+      - cadvisor
+    networks:
+      - app-tier
+    restart: always
+
+  node-exporter:
+    image: prom/node-exporter
+    volumes:
+      - /proc:/host/proc:ro
+      - /sys:/host/sys:ro
+      - /:/rootfs:ro
+    command: 
+      - '--path.procfs=/host/proc' 
+      - '--path.sysfs=/host/sys'
+      - --collector.filesystem.ignored-mount-points
+      - "^/(sys|proc|dev|host|etc|rootfs/var/lib/docker/containers|rootfs/var/lib/docker/overlay2|rootfs/run/docker/netns|rootfs/var/lib/docker/aufs)($$|/)"
+    ports:
+      - 9100:9100
+    networks:
+      - app-tier
+    restart: always
+    deploy:
+      mode: global
+  
+  cadvisor:
+    image: 'gcr.io/cadvisor/cadvisor:v0.46.0'
+    volumes:
+      - /:/rootfs:ro
+      - /var/run:/var/run:rw
+      - /sys:/sys:ro
+      - /var/lib/docker/:/var/lib/docker:ro
+      - /dev/disk:/dev/disk/:ro
+      - /etc/machine-id:/etc/machine-id:ro
+    ports:
+      - 8081:8080
+    networks:
+      - app-tier
+    restart: always
+    deploy:
+      mode: global
+      restart_policy:
+          condition: on-failure      
+  
+  # alertmanager:
+  #   image: prom/alertmanager
+  #   ports:
+  #     - 9093:9093
+  #   volumes:
+  #     - ./alertmanager/:/etc/alertmanager/
+  #   networks:
+  #     - app-tier
+  #   restart: always
+  #   command:
+  #     - '--config.file=/etc/alertmanager/config.yml'
+  #     - '--storage.path=/alertmanager'
+  
+  # grafana:
+  #   image: grafana/grafana:latest
+  #   container_name: grafana
+  #   restart: unless-stopped
+  #   links:
+  #     - prometheus:prometheus
+  #   ports:
+  #   - 3000:3000
+  #   volumes:
+  #     - ./data/grafana:/var/lib/grafana
+  #   environment:
+  #     - GF_SECURITY_ADMIN_PASSWORD=myadmin
+  #     - GF_USERS_ALLOW_SIGN_UP=false
+  
+  grafana:
+    image: grafana/grafana
+    user: "472"
+    depends_on:
+      - prometheus
+    ports:
+      - 3001:3000
+    volumes:
+      - ./grafana/data:/var/lib/grafana
+      - ./grafana/provisioning/:/etc/grafana/provisioning/
+    env_file:
+      - ./grafana/config.monitoring
+    networks:
+      - app-tier
+      - grafana-tier
+    restart: always
+
 volumes:
   data_mysql:
+  build_folder:
