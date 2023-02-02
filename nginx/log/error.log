@@ -2499,3 +2499,131 @@
 2023/02/01 18:00:23 [notice] 1#1: signal 17 (SIGCHLD) received from 20
 2023/02/01 18:00:23 [notice] 1#1: worker process 20 exited with code 0
 2023/02/01 18:00:23 [notice] 1#1: exit
+2023/02/02 13:01:19 [notice] 1#1: using the "epoll" event method
+2023/02/02 13:01:19 [notice] 1#1: nginx/1.23.3
+2023/02/02 13:01:19 [notice] 1#1: built by gcc 10.2.1 20210110 (Debian 10.2.1-6) 
+2023/02/02 13:01:19 [notice] 1#1: OS: Linux 5.15.49-linuxkit
+2023/02/02 13:01:19 [notice] 1#1: getrlimit(RLIMIT_NOFILE): 1048576:1048576
+2023/02/02 13:01:19 [notice] 1#1: start worker processes
+2023/02/02 13:01:19 [notice] 1#1: start worker process 20
+2023/02/02 13:01:19 [notice] 1#1: start worker process 21
+2023/02/02 13:01:19 [notice] 1#1: start worker process 22
+2023/02/02 13:01:19 [notice] 1#1: start worker process 23
+2023/02/02 13:01:45 [error] 21#21: *1 rewrite or internal redirection cycle while internally redirecting to "/index.html", client: 172.24.0.1, server: localhost, request: "GET /manifest.json HTTP/1.1", host: "localhost", referrer: "http://localhost/"
+2023/02/02 13:01:45 [error] 22#22: *2 rewrite or internal redirection cycle while internally redirecting to "/index.html", client: 172.24.0.1, server: localhost, request: "GET /static/css/main.f52d7c9d.css HTTP/1.1", host: "localhost", referrer: "http://localhost/"
+2023/02/02 13:01:45 [error] 20#20: *4 rewrite or internal redirection cycle while internally redirecting to "/index.html", client: 172.24.0.1, server: localhost, request: "GET /static/media/Dog2.fc95727c9b9e9695fcd0.jpg HTTP/1.1", host: "localhost", referrer: "http://localhost/"
+2023/02/02 13:01:45 [error] 23#23: *6 rewrite or internal redirection cycle while internally redirecting to "/index.html", client: 172.24.0.1, server: localhost, request: "GET /static/js/main.0e947e1d.js HTTP/1.1", host: "localhost", referrer: "http://localhost/"
+2023/02/02 13:01:45 [error] 21#21: *7 rewrite or internal redirection cycle while internally redirecting to "/index.html", client: 172.24.0.1, server: localhost, request: "GET /static/media/change1.f4d6f149dbf8539b6171.png HTTP/1.1", host: "localhost", referrer: "http://localhost/"
+2023/02/02 13:01:45 [error] 22#22: *3 rewrite or internal redirection cycle while internally redirecting to "/index.html", client: 172.24.0.1, server: localhost, request: "GET /static/media/NoBack.c4c8d4b11f22aa2dcab8.png HTTP/1.1", host: "localhost", referrer: "http://localhost/"
+2023/02/02 13:01:45 [error] 23#23: *5 rewrite or internal redirection cycle while internally redirecting to "/index.html", client: 172.24.0.1, server: localhost, request: "GET /static/media/Dog.c82965b8b50b66846fa7.jpg HTTP/1.1", host: "localhost", referrer: "http://localhost/"
+2023/02/02 13:01:45 [error] 21#21: *8 rewrite or internal redirection cycle while internally redirecting to "/index.html", client: 172.24.0.1, server: localhost, request: "GET /static/media/Frame13.ed72ff40310426927cf2.png HTTP/1.1", host: "localhost", referrer: "http://localhost/"
+2023/02/02 13:01:45 [error] 22#22: *9 rewrite or internal redirection cycle while internally redirecting to "/index.html", client: 172.24.0.1, server: localhost, request: "GET /static/media/Frame6.6421ee23f13b3611972c.png HTTP/1.1", host: "localhost", referrer: "http://localhost/"
+2023/02/02 13:01:45 [error] 23#23: *11 rewrite or internal redirection cycle while internally redirecting to "/index.html", client: 172.24.0.1, server: localhost, request: "GET /static/media/Frame4.e1df235a56ae39d09dbf.png HTTP/1.1", host: "localhost", referrer: "http://localhost/"
+2023/02/02 13:01:45 [error] 23#23: *10 rewrite or internal redirection cycle while internally redirecting to "/index.html", client: 172.24.0.1, server: localhost, request: "GET /favicon.ico HTTP/1.1", host: "localhost", referrer: "http://localhost/"
+2023/02/02 13:01:49 [error] 22#22: *15 rewrite or internal redirection cycle while internally redirecting to "/index.html", client: 172.24.0.1, server: localhost, request: "GET /static/js/main.0e947e1d.js HTTP/1.1", host: "localhost", referrer: "http://localhost/"
+2023/02/02 13:01:49 [error] 21#21: *12 rewrite or internal redirection cycle while internally redirecting to "/index.html", client: 172.24.0.1, server: localhost, request: "GET /manifest.json HTTP/1.1", host: "localhost", referrer: "http://localhost/"
+2023/02/02 13:01:49 [error] 23#23: *17 rewrite or internal redirection cycle while internally redirecting to "/index.html", client: 172.24.0.1, server: localhost, request: "GET /static/media/NoBack.c4c8d4b11f22aa2dcab8.png HTTP/1.1", host: "localhost", referrer: "http://localhost/"
+2023/02/02 13:01:49 [error] 22#22: *13 rewrite or internal redirection cycle while internally redirecting to "/index.html", client: 172.24.0.1, server: localhost, request: "GET /static/css/main.f52d7c9d.css HTTP/1.1", host: "localhost", referrer: "http://localhost/"
+2023/02/02 13:01:49 [error] 21#21: *16 rewrite or internal redirection cycle while internally redirecting to "/index.html", client: 172.24.0.1, server: localhost, request: "GET /static/media/Dog.c82965b8b50b66846fa7.jpg HTTP/1.1", host: "localhost", referrer: "http://localhost/"
+2023/02/02 13:01:49 [error] 20#20: *18 rewrite or internal redirection cycle while internally redirecting to "/index.html", client: 172.24.0.1, server: localhost, request: "GET /static/media/change1.f4d6f149dbf8539b6171.png HTTP/1.1", host: "localhost", referrer: "http://localhost/"
+2023/02/02 13:01:49 [error] 21#21: *20 rewrite or internal redirection cycle while internally redirecting to "/index.html", client: 172.24.0.1, server: localhost, request: "GET /static/media/Frame6.6421ee23f13b3611972c.png HTTP/1.1", host: "localhost", referrer: "http://localhost/"
+2023/02/02 13:01:49 [error] 22#22: *14 rewrite or internal redirection cycle while internally redirecting to "/index.html", client: 172.24.0.1, server: localhost, request: "GET /static/media/Dog2.fc95727c9b9e9695fcd0.jpg HTTP/1.1", host: "localhost", referrer: "http://localhost/"
+2023/02/02 13:01:49 [error] 23#23: *19 rewrite or internal redirection cycle while internally redirecting to "/index.html", client: 172.24.0.1, server: localhost, request: "GET /static/media/Frame4.e1df235a56ae39d09dbf.png HTTP/1.1", host: "localhost", referrer: "http://localhost/"
+2023/02/02 13:01:49 [error] 20#20: *21 rewrite or internal redirection cycle while internally redirecting to "/index.html", client: 172.24.0.1, server: localhost, request: "GET /static/media/Frame13.ed72ff40310426927cf2.png HTTP/1.1", host: "localhost", referrer: "http://localhost/"
+2023/02/02 13:02:35 [notice] 1#1: signal 3 (SIGQUIT) received, shutting down
+2023/02/02 13:02:35 [notice] 20#20: gracefully shutting down
+2023/02/02 13:02:35 [notice] 20#20: exiting
+2023/02/02 13:02:35 [notice] 23#23: gracefully shutting down
+2023/02/02 13:02:35 [notice] 21#21: gracefully shutting down
+2023/02/02 13:02:35 [notice] 21#21: exiting
+2023/02/02 13:02:35 [notice] 22#22: gracefully shutting down
+2023/02/02 13:02:35 [notice] 20#20: exit
+2023/02/02 13:02:35 [notice] 23#23: exiting
+2023/02/02 13:02:35 [notice] 21#21: exit
+2023/02/02 13:02:35 [notice] 22#22: exiting
+2023/02/02 13:02:35 [notice] 22#22: exit
+2023/02/02 13:02:35 [notice] 23#23: exit
+2023/02/02 13:02:35 [notice] 1#1: signal 17 (SIGCHLD) received from 20
+2023/02/02 13:02:35 [notice] 1#1: worker process 20 exited with code 0
+2023/02/02 13:02:35 [notice] 1#1: signal 29 (SIGIO) received
+2023/02/02 13:02:35 [notice] 1#1: signal 17 (SIGCHLD) received from 21
+2023/02/02 13:02:35 [notice] 1#1: worker process 21 exited with code 0
+2023/02/02 13:02:35 [notice] 1#1: worker process 22 exited with code 0
+2023/02/02 13:02:35 [notice] 1#1: worker process 23 exited with code 0
+2023/02/02 13:02:35 [notice] 1#1: exit
+2023/02/02 13:02:55 [notice] 1#1: using the "epoll" event method
+2023/02/02 13:02:55 [notice] 1#1: nginx/1.23.3
+2023/02/02 13:02:55 [notice] 1#1: built by gcc 10.2.1 20210110 (Debian 10.2.1-6) 
+2023/02/02 13:02:55 [notice] 1#1: OS: Linux 5.15.49-linuxkit
+2023/02/02 13:02:55 [notice] 1#1: getrlimit(RLIMIT_NOFILE): 1048576:1048576
+2023/02/02 13:02:55 [notice] 1#1: start worker processes
+2023/02/02 13:02:55 [notice] 1#1: start worker process 20
+2023/02/02 13:02:55 [notice] 1#1: start worker process 21
+2023/02/02 13:02:55 [notice] 1#1: start worker process 22
+2023/02/02 13:02:55 [notice] 1#1: start worker process 23
+2023/02/02 13:03:08 [notice] 1#1: signal 3 (SIGQUIT) received, shutting down
+2023/02/02 13:03:08 [notice] 22#22: gracefully shutting down
+2023/02/02 13:03:08 [notice] 22#22: exiting
+2023/02/02 13:03:08 [notice] 20#20: gracefully shutting down
+2023/02/02 13:03:08 [notice] 23#23: gracefully shutting down
+2023/02/02 13:03:08 [notice] 21#21: gracefully shutting down
+2023/02/02 13:03:08 [notice] 21#21: exiting
+2023/02/02 13:03:08 [notice] 22#22: exit
+2023/02/02 13:03:08 [notice] 20#20: exiting
+2023/02/02 13:03:08 [notice] 23#23: exiting
+2023/02/02 13:03:08 [notice] 21#21: exit
+2023/02/02 13:03:08 [notice] 20#20: exit
+2023/02/02 13:03:08 [notice] 23#23: exit
+2023/02/02 13:03:08 [notice] 1#1: signal 17 (SIGCHLD) received from 22
+2023/02/02 13:03:08 [notice] 1#1: worker process 22 exited with code 0
+2023/02/02 13:03:08 [notice] 1#1: worker process 23 exited with code 0
+2023/02/02 13:03:08 [notice] 1#1: signal 29 (SIGIO) received
+2023/02/02 13:03:08 [notice] 1#1: signal 17 (SIGCHLD) received from 23
+2023/02/02 13:03:08 [notice] 1#1: signal 17 (SIGCHLD) received from 21
+2023/02/02 13:03:08 [notice] 1#1: worker process 21 exited with code 0
+2023/02/02 13:03:08 [notice] 1#1: signal 29 (SIGIO) received
+2023/02/02 13:03:08 [notice] 1#1: signal 17 (SIGCHLD) received from 20
+2023/02/02 13:03:08 [notice] 1#1: worker process 20 exited with code 0
+2023/02/02 13:03:08 [notice] 1#1: exit
+2023/02/02 13:06:00 [notice] 1#1: using the "epoll" event method
+2023/02/02 13:06:00 [notice] 1#1: nginx/1.23.3
+2023/02/02 13:06:00 [notice] 1#1: built by gcc 10.2.1 20210110 (Debian 10.2.1-6) 
+2023/02/02 13:06:00 [notice] 1#1: OS: Linux 5.15.49-linuxkit
+2023/02/02 13:06:00 [notice] 1#1: getrlimit(RLIMIT_NOFILE): 1048576:1048576
+2023/02/02 13:06:00 [notice] 1#1: start worker processes
+2023/02/02 13:06:00 [notice] 1#1: start worker process 20
+2023/02/02 13:06:00 [notice] 1#1: start worker process 21
+2023/02/02 13:06:00 [notice] 1#1: start worker process 22
+2023/02/02 13:06:00 [notice] 1#1: start worker process 23
+2023/02/02 13:06:25 [notice] 1#1: signal 3 (SIGQUIT) received, shutting down
+2023/02/02 13:06:25 [notice] 21#21: gracefully shutting down
+2023/02/02 13:06:25 [notice] 21#21: exiting
+2023/02/02 13:06:25 [notice] 20#20: gracefully shutting down
+2023/02/02 13:06:25 [notice] 20#20: exiting
+2023/02/02 13:06:25 [notice] 22#22: gracefully shutting down
+2023/02/02 13:06:25 [notice] 22#22: exiting
+2023/02/02 13:06:25 [notice] 23#23: gracefully shutting down
+2023/02/02 13:06:25 [notice] 21#21: exit
+2023/02/02 13:06:25 [notice] 20#20: exit
+2023/02/02 13:06:25 [notice] 22#22: exit
+2023/02/02 13:06:25 [notice] 23#23: exiting
+2023/02/02 13:06:25 [notice] 23#23: exit
+2023/02/02 13:06:25 [notice] 1#1: signal 17 (SIGCHLD) received from 21
+2023/02/02 13:06:25 [notice] 1#1: worker process 21 exited with code 0
+2023/02/02 13:06:25 [notice] 1#1: signal 29 (SIGIO) received
+2023/02/02 13:06:25 [notice] 1#1: signal 17 (SIGCHLD) received from 20
+2023/02/02 13:06:25 [notice] 1#1: worker process 20 exited with code 0
+2023/02/02 13:06:25 [notice] 1#1: worker process 22 exited with code 0
+2023/02/02 13:06:25 [notice] 1#1: worker process 23 exited with code 0
+2023/02/02 13:06:25 [notice] 1#1: signal 17 (SIGCHLD) received from 23
+2023/02/02 13:06:25 [notice] 1#1: exit
+2023/02/02 13:08:27 [notice] 1#1: using the "epoll" event method
+2023/02/02 13:08:27 [notice] 1#1: nginx/1.23.3
+2023/02/02 13:08:27 [notice] 1#1: built by gcc 10.2.1 20210110 (Debian 10.2.1-6) 
+2023/02/02 13:08:27 [notice] 1#1: OS: Linux 5.15.49-linuxkit
+2023/02/02 13:08:27 [notice] 1#1: getrlimit(RLIMIT_NOFILE): 1048576:1048576
+2023/02/02 13:08:27 [notice] 1#1: start worker processes
+2023/02/02 13:08:27 [notice] 1#1: start worker process 19
+2023/02/02 13:08:27 [notice] 1#1: start worker process 20
+2023/02/02 13:08:27 [notice] 1#1: start worker process 21
+2023/02/02 13:08:27 [notice] 1#1: start worker process 22
