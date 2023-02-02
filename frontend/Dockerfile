@@ -18,7 +18,7 @@ COPY package-lock.json /app/package-lock.json
 ENV REACT_APP_HOST_IP_ADDRESS $API_URL
 ENV REACT_APP_BACKEND_URL $REACT_APP_BACKEND_URL
 
-RUN yarn --ignore-platform
+# RUN yarn --ignore-platform
 RUN npm install 
 RUN npm install react-scripts -g 
 RUN npm install react-router-dom 

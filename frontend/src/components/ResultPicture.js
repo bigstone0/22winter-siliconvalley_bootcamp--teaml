@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import change1 from "../images/change1.png";
 import change3 from "../images/change3.png";
-import styles from "../css/Resultpicture.module.css";
+import styles from "../css/ResultPicture.module.css";
 
 export default function ResultPic({ before, after }) {
   const [isListHover, setIsListHover] = useState(false);
