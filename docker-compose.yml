@@ -51,15 +51,15 @@ services:
 
   frontend:
     build:
-      context: ./frontend
+      context: ./frontend/frontend
       args:
         API:_URL: "*"
     environment:
       - REACT_APP_BACKEND_URL=http://localhost
     volumes:
-      - ./frontend/:/frontend
+      - ./frontend/:/frontend/frontend
       - build_folder:/frontend/build
-      - ./frontend/node_modules/:/frontend/node_modules
+      - ./frontend/node_modules/:/frontend/frontend/node_modules
     tty: true
     networks:
       - app-tier
@@ -67,14 +67,14 @@ services:
   nginx:
     build: ./nginx
     ports:
-     - 80:8080
+      - 80:8080
     volumes:
       - build_folder:/var/www/frontend
       - ./nginx/log:/var/log/nginx
     
     depends_on:
-     - backend
-     - frontend  
+      - backend
+      - frontend  
     networks:
       - app-tier
 
