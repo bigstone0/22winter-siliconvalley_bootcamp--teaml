@@ -1,0 +1,17 @@
+{
+	"ulid": "01GR8DE7M95T4GGM16EXM3MHMT",
+	"minTime": 1675274400041,
+	"maxTime": 1675281600000,
+	"stats": {
+		"numSamples": 16347,
+		"numSeries": 6064,
+		"numChunks": 6064
+	},
+	"compaction": {
+		"level": 1,
+		"sources": [
+			"01GR8DE7M95T4GGM16EXM3MHMT"
+		]
+	},
+	"version": 1
+}

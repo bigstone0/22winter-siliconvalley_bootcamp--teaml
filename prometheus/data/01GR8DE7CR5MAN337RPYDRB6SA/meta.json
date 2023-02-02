@@ -1,0 +1,17 @@
+{
+	"ulid": "01GR8DE7CR5MAN337RPYDRB6SA",
+	"minTime": 1675267200000,
+	"maxTime": 1675274400000,
+	"stats": {
+		"numSamples": 3080179,
+		"numSeries": 6581,
+		"numChunks": 19460
+	},
+	"compaction": {
+		"level": 1,
+		"sources": [
+			"01GR8DE7CR5MAN337RPYDRB6SA"
+		]
+	},
+	"version": 1
+}
