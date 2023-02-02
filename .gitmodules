@@ -2,3 +2,7 @@
 	path = backend
 	url = https://github.com/22Winter-TeamI/backend.git
 	branch = develop
+[submodule "frontend"]
+	path = frontend
+	url = https://github.com/22Winter-TeamI/frontend.git
+	backend = develop
